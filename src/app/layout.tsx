@@ -7,8 +7,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <h2>루트 레이아웃</h2>
-      <body>{children}</body>
+      <body>
+        <h2>루트 레이아웃</h2>
+        {children}
+      </body>
     </html>
   );
 }

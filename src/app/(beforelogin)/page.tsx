@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "../../public/next.svg";
+import logo from "../../../public/next.svg";
 import Link from "next/link";
 export default function Home() {
   return (
