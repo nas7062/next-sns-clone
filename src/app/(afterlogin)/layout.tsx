@@ -4,9 +4,25 @@ export default function AfterLoginLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <h2>애프터 로그인 레이아웃</h2>
-      <body>{children}</body>
-    </html>
+    <div className="flex w-full bg-amber-200">
+      <div className="flex mx-auto">
+        <header className="w-72 bg-gray-200 h-[100vh] ">
+          <div className="fixed flex flex-col">
+            <p>sadsa</p>
+            <p>sadsa</p>
+            <p>sadsa</p>
+          </div>
+        </header>
+        <div className="w-[990px] bg-gray-200 h-[100vh] flex justify-between">
+          <main className="bg-green-300 h-[100vh] w-[600px]">{children}</main>
+          <section className="bg-sky-300 h-[100vh] w-[350px]">
+            <input
+              type="text"
+              className="w-[350px] border-gray-800 border rounded-lg fixed"
+            />
+          </section>
+        </div>
+      </div>
+    </div>
   );
 }

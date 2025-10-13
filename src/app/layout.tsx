@@ -11,7 +11,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <h2>루트 레이아웃</h2>
         {children}
         {modal}
         <div id="modal-root"></div>
