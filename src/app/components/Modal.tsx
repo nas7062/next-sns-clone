@@ -9,7 +9,6 @@ export default function Modal({ children }: { children: ReactNode }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [container, setContainer] = useState<HTMLElement | null>(null);
 
-  // 포털 대상 노드 준비
   useEffect(() => {
     setContainer(document.getElementById("modal-root"));
   }, []);
@@ -25,7 +24,6 @@ export default function Modal({ children }: { children: ReactNode }) {
       try {
         el.showModal();
       } catch {
-        // Safari 구버전 등 예외 대비
         el.setAttribute("open", "");
       }
     }
@@ -34,7 +32,6 @@ export default function Modal({ children }: { children: ReactNode }) {
     document.body.style.overflow = "hidden";
 
     return () => {
-      // 닫기 & 스크롤 복원
       if (el.open) el.close();
       document.body.style.overflow = overflow;
     };
@@ -65,17 +62,13 @@ export default function Modal({ children }: { children: ReactNode }) {
   return createPortal(
     <dialog
       ref={dialogRef}
-      className="max-w-[32rem] w-[90vw] h-[40vh]  rounded-lg p-10 absolute left-1/2 top-1/2 -translate-1/2 "
+      className="max-w-[32rem] w-[90vw] max-h-[60vh]  rounded-lg p-4 absolute left-1/2 top-1/2 -translate-1/2  overflow-x-hidden"
       aria-labelledby="modal-title"
       onClick={onBackdropClick}
       onCancel={onCancel}
       onClose={safeClose}
     >
-      <h2>모달 제목</h2>
       {children}
-      <form method="dialog">
-        <button>닫기</button>
-      </form>
     </dialog>,
     container
   );
