@@ -3,13 +3,7 @@
 import Image from "next/image";
 import logo from "@/../public/logo.svg";
 import { ImageDown } from "lucide-react";
-import {
-  ChangeEvent,
-  FormEvent,
-  FormEventHandler,
-  useRef,
-  useState,
-} from "react";
+import { ChangeEvent, FormEventHandler, useRef, useState } from "react";
 export default function PostForm() {
   const imageRef = useRef<HTMLInputElement>(null);
   const [content, setContent] = useState("");
@@ -25,7 +19,7 @@ export default function PostForm() {
   };
   return (
     <form action="" onSubmit={onSubmit}>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 pt-24 border border-gray-100 pb-2">
         <div className="flex">
           <Image src={logo} alt="로고이미지" width={80} height={80} />
           <textarea
@@ -35,7 +29,7 @@ export default function PostForm() {
             value={content}
           />
         </div>
-        <div className="flex justify-between w-4/5 mx-auto">
+        <div className="flex justify-between w-[90%] mx-auto">
           <div className="w-10 h-10 hover:bg-sky-200 rounded-full flex justify-center items-center">
             <input type="file" hidden ref={imageRef} />
             <ImageDown className="cursor-pointer" onClick={onClickImage} />

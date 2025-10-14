@@ -9,7 +9,7 @@ export default function Tab() {
     setTab(tabName);
   };
   return (
-    <div className="sticky w-[640px] backdrop-blur-2xl h-10">
+    <div className="fixed w-[600px] backdrop-blur-3xl bg-white/70 z-50 h-10">
       <h2 className="text-2xl">홈</h2>
       <ul className="flex h-10 font-semibold">
         <li

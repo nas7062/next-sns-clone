@@ -13,8 +13,8 @@ export default function AfterLoginLayout({
 }>) {
   return (
     <div className="flex w-full ">
-      <div className="flex mx-auto">
-        <header className="w-72 bg-gray-100 h-[100vh] ">
+      <div className="flex mx-auto space-x-10">
+        <header className="w-72 bg-gray-100 h-[150vh]  ">
           <div className="fixed flex flex-col h-[100vh]">
             <nav className="flex flex-col flex-1 mt-4 space-y-4">
               <Link href={"/home"}>
