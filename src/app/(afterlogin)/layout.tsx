@@ -2,6 +2,7 @@ import Link from "next/link";
 import NavMenu from "./_components/NavMenu";
 import Image from "next/image";
 import LogoutButton from "./_components/LogoutButton";
+import { Search } from "lucide-react";
 
 export default function AfterLoginLayout({
   children,
@@ -26,7 +27,7 @@ export default function AfterLoginLayout({
               </ul>
               <Link
                 href={"/compose/tweet"}
-                className="py-2 px-10 bg-black text-white rounded-lg text-lg  flex justify-center"
+                className="py-2 px-10 bg-black text-white rounded-lg text-lg  flex justify-center hover:bg-gray-800 "
               >
                 게시하기
               </Link>
@@ -37,10 +38,13 @@ export default function AfterLoginLayout({
         <div className="w-[990px] bg-gray-200 h-[100vh] flex justify-between">
           <main className="bg-green-300 h-[100vh] w-[600px]">{children}</main>
           <section className="bg-sky-300 h-[100vh] w-[350px]">
-            <input
-              type="text"
-              className="w-[350px] border-gray-800 border rounded-lg fixed"
-            />
+            <div className="flex items-center mt-4">
+              <Search scale={8} className="cursor-pointer z-10 ml-0.5" />
+              <input
+                type="text"
+                className="w-[350px] h-10 border-gray-800 pl-6 border rounded-lg fixed"
+              />
+            </div>
           </section>
         </div>
       </div>
