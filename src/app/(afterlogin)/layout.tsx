@@ -1,3 +1,5 @@
+import NavMenu from "./_components/NavMenu";
+
 export default function AfterLoginLayout({
   children,
 }: Readonly<{
@@ -8,9 +10,11 @@ export default function AfterLoginLayout({
       <div className="flex mx-auto">
         <header className="w-72 bg-gray-200 h-[100vh] ">
           <div className="fixed flex flex-col">
-            <p>sadsa</p>
-            <p>sadsa</p>
-            <p>sadsa</p>
+            <nav>
+              <ul>
+                <NavMenu />
+              </ul>
+            </nav>
           </div>
         </header>
         <div className="w-[990px] bg-gray-200 h-[100vh] flex justify-between">

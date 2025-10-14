@@ -5,10 +5,7 @@ export default function HomeLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <h2>홈 레이아웃</h2>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
