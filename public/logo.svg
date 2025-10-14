@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="140" viewBox="0 0 480 140" role="img" aria-label="10012 logo">
+  <defs>
+    <style>
+      .word { font: 800 96px/1 "Inter", "Poppins", system-ui, -apple-system, "Segoe UI", "Noto Sans KR", Roboto, Arial, sans-serif; letter-spacing:-2px; }
+    </style>
+  </defs>
+  <!-- 여백 가이드 -->
+  <rect x="0" y="0" width="480" height="140" fill="none"></rect>
+  <text x="20" y="102" class="word" fill="#111111">100<tspan fill="#f59e0b">12</tspan></text>
+</svg>
