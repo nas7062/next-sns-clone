@@ -35,7 +35,9 @@ export default function NavMenu() {
         <Link
           href={"/explore"}
           className={clsx(
-            segment === "explore" ? "font-semibold" : "font-medium",
+            segment  && ["search", "explore"].includes(segment)
+              ? "font-semibold"
+              : "font-medium",
             "text-xl flex gap-2  items-center"
           )}
         >
