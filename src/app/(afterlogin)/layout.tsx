@@ -7,6 +7,7 @@ import FollowRecomend from "./_components/FollowRecomend";
 import { ReactNode } from "react";
 import SearchInput from "./_components/SearchInput";
 import SearchFilter from "./_components/SearchFilter";
+import RightSearchZone from "./_components/RightSearchZone";
 
 export default function AfterLoginLayout({
   children,
@@ -47,8 +48,7 @@ export default function AfterLoginLayout({
         <div className="w-[990px]  h-[100vh] flex justify-between">
           <main className=" h-[100vh] w-[600px]">{children}</main>
           <section className="bg-gray-100 h-[100vh] w-[350px]">
-            <SearchInput />
-            <SearchFilter />
+            <RightSearchZone />
             <TrendSection />
             <FollowRecomend />
           </section>
