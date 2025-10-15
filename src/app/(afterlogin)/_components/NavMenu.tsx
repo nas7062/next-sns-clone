@@ -22,7 +22,7 @@ export default function NavMenu() {
           href={"/home"}
           className={clsx(
             segment === "home" ? "font-semibold" : "font-medium",
-            "text-xl flex gap-2  items-center"
+            "text-xl flex gap-2  items-center hover:bg-gray-200 rounded-2xl "
           )}
         >
           <Home
@@ -35,10 +35,10 @@ export default function NavMenu() {
         <Link
           href={"/explore"}
           className={clsx(
-            segment  && ["search", "explore"].includes(segment)
+            segment && ["search", "explore"].includes(segment)
               ? "font-semibold"
               : "font-medium",
-            "text-xl flex gap-2  items-center"
+            "text-xl flex gap-2  items-center hover:bg-gray-200 rounded-2xl"
           )}
         >
           <Search
@@ -53,7 +53,7 @@ export default function NavMenu() {
           href={"/messages"}
           className={clsx(
             segment === "messages" ? "font-semibold" : "font-medium",
-            "text-xl flex gap-2  items-center"
+            "text-xl flex gap-2  items-center hover:bg-gray-200 rounded-2xl"
           )}
         >
           <MessagesSquare
@@ -68,7 +68,7 @@ export default function NavMenu() {
           href={"/profile"}
           className={clsx(
             segment === "profile" ? "font-semibold" : "font-medium",
-            "text-xl flex gap-2  items-center"
+            "text-xl flex gap-2  items-center hover:bg-gray-200 rounded-2xl"
           )}
         >
           <User

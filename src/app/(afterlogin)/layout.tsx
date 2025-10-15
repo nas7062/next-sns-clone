@@ -5,11 +5,14 @@ import LogoutButton from "./_components/LogoutButton";
 import { Search } from "lucide-react";
 import TrendSection from "./_components/TrendSection";
 import FollowRecomend from "./_components/FollowRecomend";
+import { ReactNode } from "react";
 
 export default function AfterLoginLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: ReactNode;
 }>) {
   return (
     <div className="flex w-full ">
@@ -27,12 +30,12 @@ export default function AfterLoginLayout({
                 />
               </Link>
 
-              <ul className="space-y-4">
+              <ul className="space-y-4 ml-2">
                 <NavMenu />
               </ul>
               <Link
                 href={"/compose/tweet"}
-                className="py-2 px-10 bg-black text-white rounded-lg text-lg  flex justify-center hover:bg-gray-800 "
+                className="ml-2 py-2 px-10 bg-black text-white rounded-lg text-lg  flex justify-center hover:bg-gray-800 "
               >
                 게시하기
               </Link>
@@ -54,6 +57,7 @@ export default function AfterLoginLayout({
             <FollowRecomend />
           </section>
         </div>
+        {modal}
       </div>
     </div>
   );
