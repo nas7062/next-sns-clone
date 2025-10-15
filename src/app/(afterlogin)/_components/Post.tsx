@@ -1,10 +1,10 @@
-import { Heart, MessageSquare, Share, User } from "lucide-react";
 import Image from "next/image";
 import logo from "@/../public/logo.svg";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/ko";
 import Link from "next/link";
+import ActionButtons from "./ActionButtons";
 dayjs.locale("ko");
 dayjs.extend(relativeTime);
 
@@ -42,11 +42,7 @@ export default function Post() {
           </div>
           <div>{target.content}</div>
           <Image src={logo} alt="이미지" width={400} height={400} />
-          <div className="flex justify-between">
-            <MessageSquare />
-            <Share />
-            <Heart />
-          </div>
+          <ActionButtons />
         </div>
       </div>
     </article>
