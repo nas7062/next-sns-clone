@@ -1,6 +1,8 @@
+"use client";
+
 import { Search } from "lucide-react";
 
-export default function SearchInput() {
+export default function SearchInput({ q }: { q?: string }) {
   return (
     <div className="flex items-center mt-4">
       <Search scale={8} className="cursor-pointer z-10 ml-0.5" />

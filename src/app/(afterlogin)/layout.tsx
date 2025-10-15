@@ -5,8 +5,6 @@ import LogoutButton from "./_components/LogoutButton";
 import TrendSection from "./_components/TrendSection";
 import FollowRecomend from "./_components/FollowRecomend";
 import { ReactNode } from "react";
-import SearchInput from "./_components/SearchInput";
-import SearchFilter from "./_components/SearchFilter";
 import RightSearchZone from "./_components/RightSearchZone";
 
 export default function AfterLoginLayout({
