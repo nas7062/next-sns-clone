@@ -2,10 +2,11 @@ import Link from "next/link";
 import NavMenu from "./_components/NavMenu";
 import Image from "next/image";
 import LogoutButton from "./_components/LogoutButton";
-import { Search } from "lucide-react";
 import TrendSection from "./_components/TrendSection";
 import FollowRecomend from "./_components/FollowRecomend";
 import { ReactNode } from "react";
+import SearchInput from "./_components/SearchInput";
+import SearchFilter from "./_components/SearchFilter";
 
 export default function AfterLoginLayout({
   children,
@@ -46,13 +47,8 @@ export default function AfterLoginLayout({
         <div className="w-[990px]  h-[100vh] flex justify-between">
           <main className=" h-[100vh] w-[600px]">{children}</main>
           <section className="bg-gray-100 h-[100vh] w-[350px]">
-            <div className="flex items-center mt-4">
-              <Search scale={8} className="cursor-pointer z-10 ml-0.5" />
-              <input
-                type="text"
-                className="w-[350px] h-10 border-gray-800 pl-6 border rounded-lg fixed"
-              />
-            </div>
+            <SearchInput />
+            <SearchFilter />
             <TrendSection />
             <FollowRecomend />
           </section>
