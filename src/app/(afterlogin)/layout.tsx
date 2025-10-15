@@ -18,7 +18,7 @@ export default function AfterLoginLayout({
 }>) {
   return (
     <div className="flex w-full ">
-      <div className="flex mx-auto space-x-10">
+      <div className="flex mx-auto space-x-2">
         <header className="w-72 bg-gray-100 h-[150vh]  ">
           <div className="fixed flex flex-col h-[100vh]">
             <nav className="flex flex-col flex-1 mt-4 space-y-4">
