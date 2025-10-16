@@ -5,11 +5,13 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/ko";
 import Link from "next/link";
 import ActionButtons from "./ActionButtons";
+import PostArticle from "./PostArticle";
 dayjs.locale("ko");
 dayjs.extend(relativeTime);
 
 export default function Post() {
   const target = {
+    postId: 1,
     User: {
       id: "nas7062",
       nickname: "ms",
@@ -17,11 +19,12 @@ export default function Post() {
     },
     content: "asdsaㅇㅁ",
     createdAt: new Date(),
+    Images: [],
   };
   return (
-    <article>
+    <PostArticle post={target}>
       <div className="flex hover:bg-gray-100 p-6 cursor-pointer">
-        <Link href={`${target.User.id}/status`}>
+        <Link href={`/${target.User.id}`}>
           <div className="relative">
             <Image
               src={target.User.image}
@@ -45,6 +48,6 @@ export default function Post() {
           <ActionButtons />
         </div>
       </div>
-    </article>
+    </PostArticle>
   );
 }
