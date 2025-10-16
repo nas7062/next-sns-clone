@@ -1,3 +1,5 @@
+"use client";
+
 import { useRouter } from "next/navigation";
 import { ReactNode } from "react";
 
@@ -23,5 +25,5 @@ export default function PostArticle({ children, post }: PostArticleProps) {
     router.push(`/${post.User.id}/status/${post.postId}`);
   };
 
-  return <article onClick={onClick}>{children}</article>;
+  return <article onClickCapture={onClick}>{children}</article>;
 }
