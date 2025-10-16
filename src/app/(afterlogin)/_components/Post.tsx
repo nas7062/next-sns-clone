@@ -6,6 +6,7 @@ import "dayjs/locale/ko";
 import Link from "next/link";
 import ActionButtons from "./ActionButtons";
 import PostArticle from "./PostArticle";
+import { faker } from "@faker-js/faker";
 dayjs.locale("ko");
 dayjs.extend(relativeTime);
 
@@ -19,8 +20,15 @@ export default function Post() {
     },
     content: "asdsaㅇㅁ",
     createdAt: new Date(),
-    Images: [],
+    Images: [] as any[],
   };
+
+  if (Math.random() > 0.5) {
+    target.Images.push({
+      imageId: 1,
+      link: faker.image.urlPicsumPhotos({ width: 800, height: 600 }),
+    });
+  }
   return (
     <PostArticle post={target}>
       <div className="flex hover:bg-gray-100 p-6 cursor-pointer">
@@ -44,7 +52,19 @@ export default function Post() {
             <p>{dayjs(target.createdAt).fromNow(true)}</p>
           </div>
           <div>{target.content}</div>
-          <Image src={logo} alt="이미지" width={400} height={400} />
+          {target.Images && target.Images.length > 0 && (
+            <Link
+              href={`/${target.User.id}/status/${target.postId}/photo/${target.Images[0].imageId}`}
+            >
+              <Image
+                src={target.Images[0]?.link}
+                alt="이미지"
+                width={400}
+                height={400}
+              />
+            </Link>
+          )}
+
           <ActionButtons />
         </div>
       </div>
