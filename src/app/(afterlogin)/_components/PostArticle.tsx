@@ -3,8 +3,8 @@
 import { useRouter } from "next/navigation";
 import { ReactNode } from "react";
 
-type PostArticleProps = {
-  children: ReactNode;
+export type PostProps = {
+  children?: ReactNode;
   post: {
     postId: number;
     content: string;
@@ -18,7 +18,7 @@ type PostArticleProps = {
   };
 };
 
-export default function PostArticle({ children, post }: PostArticleProps) {
+export default function PostArticle({ children, post }: PostProps) {
   const router = useRouter();
 
   const onClick = () => {

@@ -7,7 +7,7 @@ export default function ActionButtons() {
   const reposted = true;
   const liked = true;
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between mt-6">
       <div className="relative">
         <MessageSquare
           className={clsx(

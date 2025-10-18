@@ -11,6 +11,8 @@ export default function Page() {
         <PostForm />
         <Post />
         <Post />
+        <Post />
+        <Post />
       </TabProvider>
     </main>
   );
