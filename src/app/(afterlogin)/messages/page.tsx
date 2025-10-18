@@ -5,8 +5,8 @@ export default function Page() {
     <main>
       <header className="h-14 flex  items-center px-4">
         <h3 className="font-semibold text-xl">쪽지</h3>
-        <Room />
       </header>
+      <Room />
     </main>
   );
 }
