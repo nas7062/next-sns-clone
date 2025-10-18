@@ -51,7 +51,6 @@ export default function PostImages({ post }: PostProps) {
         href={`/${post.User.id}/status/${post.postId}/photo/${a.imageId}`}
         className="grid grid-cols-2 grid-rows-2 gap-[2px] rounded-xl overflow-hidden aspect-[4/3]"
       >
-        {/* 왼쪽: 세로 2칸 차지 */}
         <div className="relative col-span-1 row-span-2">
           <Image
             src={a.link}
@@ -63,7 +62,6 @@ export default function PostImages({ post }: PostProps) {
           />
         </div>
 
-        {/* 오른쪽 위 */}
         <div className="relative">
           <Image
             src={b.link}
@@ -74,7 +72,6 @@ export default function PostImages({ post }: PostProps) {
           />
         </div>
 
-        {/* 오른쪽 아래 */}
         <div className="relative">
           <Image
             src={c.link}
@@ -95,7 +92,6 @@ export default function PostImages({ post }: PostProps) {
         href={`/${post.User.id}/status/${post.postId}/photo/${a.imageId}`}
         className="grid grid-cols-2 grid-rows-2 gap-[2px] rounded-xl overflow-hidden aspect-[4/3]"
       >
-        {/* 왼쪽: 세로 2칸 차지 */}
         <div className="relative col-span-1 row-span-1">
           <Image
             src={a.link}
@@ -117,7 +113,6 @@ export default function PostImages({ post }: PostProps) {
           />
         </div>
 
-        {/* 오른쪽 위 */}
         <div className="relative">
           <Image
             src={c.link}
@@ -128,7 +123,6 @@ export default function PostImages({ post }: PostProps) {
           />
         </div>
 
-        {/* 오른쪽 아래 */}
         <div className="relative">
           <Image
             src={d.link}

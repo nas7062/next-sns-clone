@@ -1,14 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import {
-  Home,
-  MessageCircle,
-  MessageSquareShare,
-  MessagesSquare,
-  Search,
-  User,
-} from "lucide-react";
+import { Home, MessagesSquare, Search, User } from "lucide-react";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 
@@ -28,7 +21,7 @@ export default function NavMenu() {
           <Home
             className={clsx(segment === "home" ? "stroke-3 " : "stroke-2")}
           />
-          홈
+          <p className="hidden xl:block">홈</p>
         </Link>
       </li>
       <li>
@@ -44,7 +37,7 @@ export default function NavMenu() {
           <Search
             className={clsx(segment === "explore" ? "stroke-3 " : "stroke-2")}
           />
-          탐색하기
+          <p className="hidden xl:block">탐색하기</p>
         </Link>
       </li>
 
@@ -59,7 +52,7 @@ export default function NavMenu() {
           <MessagesSquare
             className={clsx(segment === "messages" ? "stroke-3 " : "stroke-2")}
           />
-          메세지
+          <p className="hidden xl:block">메세지</p>
         </Link>
       </li>
 
@@ -74,7 +67,7 @@ export default function NavMenu() {
           <User
             className={clsx(segment === "profile" ? "stroke-3 " : "stroke-2")}
           />
-          프로필
+          <p className="hidden xl:block ">프로필</p>
         </Link>
       </li>
     </>
