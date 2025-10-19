@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import "./globals.css";
+import { MSWProvider } from "./components/MSWComponent";
 
 export default function RootLayout({
   children,
@@ -11,8 +12,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
-        {modal}
+        <MSWProvider>
+          {children}
+          {modal}
+        </MSWProvider>
         <div id="modal-root"></div>
       </body>
     </html>
