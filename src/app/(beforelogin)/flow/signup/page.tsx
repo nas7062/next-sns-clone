@@ -1,5 +1,6 @@
 import Modal from "@/app/components/Modal";
 import { redirect } from "next/navigation";
+import Form from "next/form";
 export default function Page() {
   const onSubmit = async (formData: FormData) => {
     "use server";
@@ -33,7 +34,7 @@ export default function Page() {
             </p>
           </header>
 
-          <form
+          <Form
             className="px-6 pb-6 pt-4 space-y-4  overflow-hidden"
             action={onSubmit}
           >
@@ -135,7 +136,7 @@ export default function Page() {
                 가입하기
               </button>
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     </Modal>
