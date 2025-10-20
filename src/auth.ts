@@ -6,15 +6,14 @@ type LoginResponse = {
   id: string;
   nickname: string;
   image?: string | null;
-  // 백엔드가 주는 추가 필드들…
   [k: string]: unknown;
 };
 
 export const {
   handlers: { GET, POST },
   auth,
-  signIn, // 서버 전용
-  signOut, // 서버 전용
+  signIn,
+  signOut,
 } = NextAuth({
   pages: {
     signIn: "/flow/login",
@@ -24,7 +23,6 @@ export const {
 
   providers: [
     Credentials({
-      // id 기본값: "credentials" → 클라이언트 signIn과 일치해야 합니다.
       credentials: {
         username: { label: "Username", type: "text", placeholder: "jsmith" },
         password: { label: "Password", type: "password" },

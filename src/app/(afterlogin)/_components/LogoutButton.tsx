@@ -1,15 +1,20 @@
 "use client";
 import Image from "next/image";
 import logo from "@/../public/logo.svg";
+import { useRouter } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
 export default function LogoutButton() {
-  const me = {
-    id: "10012",
-    nickname: "ms",
-    image: logo,
-  };
+  const router = useRouter();
+  const { data: me } = useSession();
 
   const onLogout = () => {
-    console.log("로그아웃");
+    signOut({ redirect: false }).then(() => {
+      router.replace("/");
+    });
+
+    if (!me?.user) {
+      return null;
+    }
   };
   return (
     <button
@@ -17,11 +22,16 @@ export default function LogoutButton() {
       onClick={onLogout}
     >
       <div>
-        <Image src={logo} alt="logo" width={115} height={120} />
+        <Image
+          src={me?.user?.image as string}
+          alt="logo"
+          width={115}
+          height={120}
+        />
       </div>
       <div className="xl:block hidden">
-        <p>{me.id}</p>
-        <p>@{me.nickname}</p>
+        <p>{me?.user?.id}</p>
+        <p>@{me?.user?.name}</p>
       </div>
     </button>
   );

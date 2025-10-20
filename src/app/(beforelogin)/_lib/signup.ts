@@ -1,4 +1,5 @@
 "use server";
+import { signIn } from "@/auth";
 import { redirect } from "next/navigation";
 
 export type SignupState = { message: string };
@@ -21,6 +22,11 @@ export default async function onSubmit(
         credentials: "include",
       }
     );
+    await signIn("credentials", {
+      username: formData.get("id"),
+      password: formData.get("password"),
+      redirect: false,
+    });
     console.log(response);
   } catch (e) {
     console.error(e);
