@@ -1,26 +1,31 @@
-import Modal from "@/app/components/Modal";
-import { redirect } from "next/navigation";
-import Form from "next/form";
-export default function Page() {
-  const onSubmit = async (formData: FormData) => {
-    "use server";
+"use client";
 
-    let shouldRedirect = false;
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/users`,
-        {
-          method: "post",
-          body: formData,
-          credentials: "include",
-        }
-      );
-      shouldRedirect = true;
-    } catch (error) {
-      console.error(error);
-    }
-    if (shouldRedirect) redirect("/home");
-  };
+import Modal from "@/app/components/Modal";
+import Form from "next/form";
+import onSubmit from "../../_lib/signup";
+import { useFormStatus } from "react-dom";
+import { useActionState } from "react";
+
+function showMessage(message: string | null | undefined) {
+  if (message === "no_id") {
+    return "아이디를 입력하세요.";
+  }
+  if (message === "no_name") {
+    return "닉네임을 입력하세요.";
+  }
+  if (message === "no_password") {
+    return "비밀번호를 입력하세요.";
+  }
+  if (message === "no_profile") {
+    return "이미지를 업로드하세요.";
+  }
+
+  return "";
+}
+
+export default function Page() {
+  const { pending } = useFormStatus();
+  const [state, formAction] = useActionState(onSubmit, { message: "" });
   return (
     <Modal>
       <div className="w-[min(500px,80vw)]  overflow-hidden">
@@ -36,7 +41,7 @@ export default function Page() {
 
           <Form
             className="px-6 pb-6 pt-4 space-y-4  overflow-hidden"
-            action={onSubmit}
+            action={formAction}
           >
             {/* 아이디 */}
             <div className="group relative ">
@@ -132,9 +137,11 @@ export default function Page() {
               <button
                 type="submit"
                 className="cursor-pointer inline-flex items-center justify-center rounded-lg bg-neutral-900 px-4 h-11 text-white hover:bg-neutral-800 active:bg-neutral-900/90 transition w-full"
+                disabled={pending}
               >
                 가입하기
               </button>
+              <div className="text-red-500">{showMessage(state?.message)}</div>
             </div>
           </Form>
         </div>
