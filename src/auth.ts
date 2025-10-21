@@ -27,6 +27,7 @@ export const {
         username: { label: "Username", type: "text", placeholder: "jsmith" },
         password: { label: "Password", type: "password" },
       },
+
       authorize: async (credentials) => {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_BASE_URL}/api/login`,

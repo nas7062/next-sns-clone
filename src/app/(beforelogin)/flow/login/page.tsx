@@ -2,13 +2,20 @@
 
 import Modal from "@/app/components/Modal";
 import { ChangeEventHandler, FormEventHandler, useState } from "react";
+
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
 export default function Page() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const router = useRouter();
+  const { data: session } = useSession();
+  console.log(session);
+  if (session?.user) {
+    router.replace("/home");
+    return null;
+  }
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     setMessage("");

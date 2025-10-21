@@ -10,7 +10,6 @@ export default function BeforeLayout({
   return (
     <html lang="en">
       <body>
-        <h2>비포 로그인 레이아웃</h2>
         <div>{children}</div>
         <div>{modal}</div>
       </body>

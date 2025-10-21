@@ -22,12 +22,7 @@ export default function LogoutButton() {
       onClick={onLogout}
     >
       <div>
-        <Image
-          src={me?.user?.image as string}
-          alt="logo"
-          width={115}
-          height={120}
-        />
+        <Image src={logo} alt="logo" width={115} height={120} />
       </div>
       <div className="xl:block hidden">
         <p>{me?.user?.id}</p>
