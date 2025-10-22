@@ -7,6 +7,7 @@ import FollowRecomend from "./_components/FollowRecomend";
 import { ReactNode } from "react";
 import RightSearchZone from "./_components/RightSearchZone";
 import { PenSquare } from "lucide-react";
+import RQProvider from "./_components/RQProvider";
 
 export default function AfterLoginLayout({
   children,
@@ -47,16 +48,19 @@ export default function AfterLoginLayout({
             </nav>
           </div>
         </header>
-        <div className=" w-[600px] lg:w-[990px]  h-[100vh] flex justify-between">
-          <main className=" h-[100vh] w-[600px]  lg:mx-auto mx-0">
-            {children}
-          </main>
-          <section className="bg-gray-100 h-[100vh] w-[350px]  hidden lg:block">
-            <RightSearchZone />
-            <TrendSection />
-            <FollowRecomend />
-          </section>
-        </div>
+        <RQProvider>
+          <div className=" w-[600px] lg:w-[990px]  h-[100vh] flex justify-between">
+            <main className=" h-[100vh] w-[600px]  lg:mx-auto mx-0">
+              {children}
+            </main>
+
+            <section className="bg-gray-100 h-[100vh] w-[350px]  hidden lg:block">
+              <RightSearchZone />
+              <TrendSection />
+              <FollowRecomend />
+            </section>
+          </div>
+        </RQProvider>
         {modal}
       </div>
     </div>
