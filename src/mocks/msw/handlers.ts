@@ -7,9 +7,8 @@ const User = [
   { id: "leoturtle", nickname: "레오", image: faker.image.avatar() },
 ];
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 export const handlers = [
-  http.post(`${baseUrl}/api/login`, () => {
+  http.post(`/api/login`, () => {
     console.log("로그인");
     return HttpResponse.json(User[1], {
       headers: {
@@ -17,7 +16,7 @@ export const handlers = [
       },
     });
   }),
-  http.post(`${baseUrl}/api/logout`, () => {
+  http.post(`/api/logout`, () => {
     console.log("로그아웃");
     return new HttpResponse(null, {
       headers: {
@@ -25,7 +24,7 @@ export const handlers = [
       },
     });
   }),
-  http.post(`${baseUrl}/api/users`, async ({ request }) => {
+  http.post(`/api/users`, async ({ request }) => {
     console.log("회원가입");
     // return HttpResponse.text(JSON.stringify('user_exists'), {
     //   status: 403,

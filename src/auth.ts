@@ -1,53 +1,44 @@
-// src/auth.ts
 import NextAuth from "next-auth";
-import Credentials from "next-auth/providers/credentials";
-
-type LoginResponse = {
-  id: string;
-  nickname: string;
-  image?: string | null;
-  [k: string]: unknown;
-};
+import CredentialsProvider from "next-auth/providers/credentials";
 
 export const {
-  handlers: { GET, POST },
-  auth,
-  signIn,
-  signOut,
+  handlers: { GET, POST } /** API 라우트 */,
+  auth /** 내가 로그인을 했는지 안했는지 알아내는 함수 */,
+  signIn /** 로그인하는 함수 */,
 } = NextAuth({
   pages: {
+    //회원가입과 로그인시에 어떤 페이지 경로인지 삽입
     signIn: "/flow/login",
     newUser: "/flow/signup",
   },
-  session: { strategy: "jwt" },
-
   providers: [
-    Credentials({
-      credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
-        password: { label: "Password", type: "password" },
-      },
-
-      authorize: async (credentials) => {
-        const res = await fetch(
+    CredentialsProvider({
+      async authorize(credentials) {
+        //로그인 수행할때에 아래 부분 호출
+        const authResponse = await fetch(
           `${process.env.NEXT_PUBLIC_BASE_URL}/api/login`,
           {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+            },
             body: JSON.stringify({
-              id: credentials?.username,
-              password: credentials?.password,
+              id: credentials.username,
+              password: credentials.password,
             }),
           }
         );
-        if (!res.ok) return null;
 
-        const user = (await res.json()) as LoginResponse;
+        if (!authResponse.ok) {
+          return null;
+        }
+
+        const user = await authResponse.json();
 
         return {
-          email: user.id,
+          id: user.id,
           name: user.nickname,
-          image: user.image ?? null,
+          image: user.image,
           ...user,
         };
       },

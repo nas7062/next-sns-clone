@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "mock": "npx tsx watch .src/mocks/msw/http.ts"
   },
   "dependencies": {
     "@faker-js/faker": "^10.1.0",
