@@ -8,39 +8,30 @@ import ActionButtons from "./ActionButtons";
 import PostArticle from "./PostArticle";
 import { faker } from "@faker-js/faker";
 import PostImages from "./PostImages";
+import { Post as IPost } from "@/model/Post";
 dayjs.locale("ko");
 dayjs.extend(relativeTime);
 
-export default function Post() {
-  const target = {
-    postId: 1,
-    User: {
-      id: "nas7062",
-      nickname: "ms",
-      image: logo,
-    },
-    content: "asdsaㅇㅁ",
-    createdAt: new Date(),
-    Images: [] as any[],
-  };
+export default function Post({ post }: { post: IPost }) {
+  const target = post;
 
   if (Math.random() > 0.5) {
     target.Images.push(
       {
         imageId: 1,
-        link: faker.image.urlPicsumPhotos({ width: 400, height: 300 }),
+        Link: faker.image.urlPicsumPhotos({ width: 400, height: 300 }),
       },
       {
         imageId: 2,
-        link: faker.image.urlPicsumPhotos({ width: 400, height: 300 }),
+        Link: faker.image.urlPicsumPhotos({ width: 400, height: 300 }),
       },
       {
         imageId: 3,
-        link: faker.image.urlPicsumPhotos({ width: 400, height: 300 }),
+        Link: faker.image.urlPicsumPhotos({ width: 400, height: 300 }),
       },
       {
         imageId: 4,
-        link: faker.image.urlPicsumPhotos({ width: 400, height: 300 }),
+        Link: faker.image.urlPicsumPhotos({ width: 400, height: 300 }),
       }
     );
   }
