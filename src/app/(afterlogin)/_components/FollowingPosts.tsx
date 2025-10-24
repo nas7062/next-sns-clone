@@ -7,7 +7,7 @@ import { getFollowingPosts } from "../_lib/getFollowingPosts";
 
 export default function FollowingPosts() {
   const { data } = useQuery<IPost[]>({
-    queryKey: ["posts", "recommends"],
+    queryKey: ["posts", "following"],
     queryFn: getFollowingPosts,
     staleTime: 60000,
   });

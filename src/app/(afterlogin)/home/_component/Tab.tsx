@@ -1,12 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useContext } from "react";
+import { TabContext } from "./TabProvider";
 
 export default function Tab() {
-  const [tab, setTab] = useState("reco");
+  const { tab, setTab } = useContext(TabContext);
 
-  const onChangeTab = (tabName: string) => {
-    setTab(tabName);
+  const onCLickReco = () => {
+    setTab("reco");
+  };
+
+  const onCLickFollow = () => {
+    setTab("follow");
   };
   return (
     <div className="fixed w-[600px] backdrop-blur-3xl bg-white/70 z-50 h-10">
@@ -14,7 +19,7 @@ export default function Tab() {
       <ul className="flex h-10 font-semibold">
         <li
           className="flex flex-1 bg-gray-100 justify-center items-center hover:bg-gray-200 cursor-pointer relative"
-          onClick={() => onChangeTab("reco")}
+          onClick={onCLickReco}
         >
           추천
           <div
@@ -24,7 +29,7 @@ export default function Tab() {
         </li>
         <li
           className="flex flex-1 bg-gray-100 justify-center items-center hover:bg-gray-200 cursor-pointer relative"
-          onClick={() => onChangeTab("follow")}
+          onClick={onCLickFollow}
         >
           팔로우 중
           <div

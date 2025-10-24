@@ -8,7 +8,7 @@ import PostForm from "./_component/PostForm";
 import Tab from "./_component/Tab";
 import TabProvider from "./_component/TabProvider";
 import { getPostRecommends } from "../_lib/getPostRecommends";
-import PostRecommends from "../_components/PostRecommends";
+import TabDecider from "./_component/TabDecider";
 
 export default async function Page() {
   const queryClient = new QueryClient();
@@ -24,8 +24,8 @@ export default async function Page() {
         <TabProvider>
           <Tab />
           <PostForm />
+          <TabDecider />
         </TabProvider>
-        <PostRecommends />
       </HydrationBoundary>
     </main>
   );
