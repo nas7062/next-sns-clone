@@ -1,9 +1,9 @@
-export async function getPostRecommends() {
+export async function getFollowingPosts() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/postRecommends`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/followingPosts`,
     {
       next: {
-        tags: ["posts", "recommends"],
+        tags: ["posts", "following"],
       },
     }
   );

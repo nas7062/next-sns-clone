@@ -14,14 +14,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <MSWProvider>
-          <RQProvider>
+        <RQProvider>
+          <MSWProvider>
             <AuthSession>
               {children}
               {modal}
             </AuthSession>
-          </RQProvider>
-        </MSWProvider>
+          </MSWProvider>
+        </RQProvider>
         <div id="modal-root"></div>
       </body>
     </html>
