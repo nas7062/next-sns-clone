@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
       "picsum.photos",
       "avatars.githubusercontent.com",
       "cdn.jsdelivr.net",
+      "loremflickr.com",
     ],
   },
 };

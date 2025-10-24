@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import "./globals.css";
 import { MSWProvider } from "./components/MSWComponent";
 import AuthSession from "./components/AuthSession";
+import RQProvider from "./(afterlogin)/_components/RQProvider";
 
 export default function RootLayout({
   children,
@@ -14,10 +15,12 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <MSWProvider>
-          <AuthSession>
-            {children}
-            {modal}
-          </AuthSession>
+          <RQProvider>
+            <AuthSession>
+              {children}
+              {modal}
+            </AuthSession>
+          </RQProvider>
         </MSWProvider>
         <div id="modal-root"></div>
       </body>

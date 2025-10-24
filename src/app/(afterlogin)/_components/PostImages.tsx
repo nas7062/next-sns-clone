@@ -3,78 +3,73 @@ import { PostProps } from "./PostArticle";
 import Image from "next/image";
 
 export default function PostImages({ post }: PostProps) {
-  if (!post.Images) return null;
-  if (!post.Images.length) return null;
+  const imgs = (post?.Images ?? []).filter(
+    (img) => typeof img?.Link === "string" && img.Link.length > 0
+  );
+  if (imgs.length === 0) return null;
 
-  if (post.Images.length === 1) {
+  if (imgs.length === 1) {
+    const a = imgs[0];
     return (
-      <Link
-        href={`/${post.User.id}/status/${post.postId}/photo/${post.Images[0].imageId}`}
-      >
-        <Image
-          src={post.Images[0]?.link}
-          alt="이미지"
-          width={400}
-          height={400}
-        />
+      <Link href={`/${post.User?.id}/status/${post.postId}/photo/${a.imageId}`}>
+        <Image src={a.Link} alt="이미지" width={400} height={400} />
       </Link>
     );
   }
-  if (post.Images.length === 2) {
+
+  if (imgs.length === 2) {
+    const [a, b] = imgs;
     return (
       <Link
         className="flex gap-[2px]"
-        href={`/${post.User.id}/status/${post.postId}/photo/${post.Images[0].imageId}`}
+        href={`/${post.User?.id}/status/${post.postId}/photo/${a.imageId}`}
       >
         <Image
-          src={post.Images[0]?.link}
+          src={a.Link}
           alt="이미지"
           width={400}
           height={400}
           className="flex-1 w-1/2 rounded-xl"
         />
         <Image
-          src={post.Images[1]?.link}
+          src={b.Link}
           alt="이미지"
           width={400}
           height={400}
-          className="flex-1  w-1/2  rounded-xl"
+          className="flex-1 w-1/2 rounded-xl"
         />
       </Link>
     );
   }
-  if (post.Images.length === 3) {
-    const [a, b, c] = post.Images;
 
+  if (imgs.length === 3) {
+    const [a, b, c] = imgs;
     return (
       <Link
-        href={`/${post.User.id}/status/${post.postId}/photo/${a.imageId}`}
+        href={`/${post.User?.id}/status/${post.postId}/photo/${a.imageId}`}
         className="grid grid-cols-2 grid-rows-2 gap-[2px] rounded-xl overflow-hidden aspect-[4/3]"
       >
         <div className="relative col-span-1 row-span-2">
           <Image
-            src={a.link}
+            src={a.Link}
             alt="이미지"
             fill
             sizes="(min-width:1024px) 50vw, 100vw"
             className="object-cover"
-            priority={false}
           />
         </div>
-
         <div className="relative">
           <Image
-            src={b.link}
+            src={b.Link}
             alt="이미지"
             fill
             sizes="(min-width:1024px) 25vw, 50vw"
             className="object-cover"
           />
         </div>
-
         <div className="relative">
           <Image
-            src={c.link}
+            src={c.Link}
             alt="이미지"
             fill
             sizes="(min-width:1024px) 25vw, 50vw"
@@ -84,48 +79,44 @@ export default function PostImages({ post }: PostProps) {
       </Link>
     );
   }
-  if (post.Images.length === 4) {
-    const [a, b, c, d] = post.Images;
 
+  if (imgs.length >= 4) {
+    const [a, b, c, d] = imgs;
     return (
       <Link
-        href={`/${post.User.id}/status/${post.postId}/photo/${a.imageId}`}
+        href={`/${post.User?.id}/status/${post.postId}/photo/${a.imageId}`}
         className="grid grid-cols-2 grid-rows-2 gap-[2px] rounded-xl overflow-hidden aspect-[4/3]"
       >
-        <div className="relative col-span-1 row-span-1">
-          <Image
-            src={a.link}
-            alt="이미지"
-            fill
-            sizes="(min-width:1024px) 25vw, 50vw"
-            className="object-cover"
-            priority={false}
-          />
-        </div>
-        <div className="relative col-span-1 row-span-1">
-          <Image
-            src={b.link}
-            alt="이미지"
-            fill
-            sizes="(min-width:1024px) 25vw, 50vw"
-            className="object-cover"
-            priority={false}
-          />
-        </div>
-
         <div className="relative">
           <Image
-            src={c.link}
+            src={a.Link}
             alt="이미지"
             fill
             sizes="(min-width:1024px) 25vw, 50vw"
             className="object-cover"
           />
         </div>
-
         <div className="relative">
           <Image
-            src={d.link}
+            src={b.Link}
+            alt="이미지"
+            fill
+            sizes="(min-width:1024px) 25vw, 50vw"
+            className="object-cover"
+          />
+        </div>
+        <div className="relative">
+          <Image
+            src={c.Link}
+            alt="이미지"
+            fill
+            sizes="(min-width:1024px) 25vw, 50vw"
+            className="object-cover"
+          />
+        </div>
+        <div className="relative">
+          <Image
+            src={d.Link}
             alt="이미지"
             fill
             sizes="(min-width:1024px) 25vw, 50vw"
@@ -135,4 +126,6 @@ export default function PostImages({ post }: PostProps) {
       </Link>
     );
   }
+
+  return null;
 }

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import logo from "@/../public/logo.svg";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/ko";
@@ -16,7 +15,7 @@ export default function Post({ post }: { post: IPost }) {
   const target = post;
 
   if (Math.random() > 0.5) {
-    target.Images.push(
+    target?.Images.push(
       {
         imageId: 1,
         Link: faker.image.urlPicsumPhotos({ width: 400, height: 300 }),
@@ -35,6 +34,7 @@ export default function Post({ post }: { post: IPost }) {
       }
     );
   }
+  if (!target) return;
   return (
     <PostArticle post={target}>
       <div className="flex hover:bg-gray-100 p-6 cursor-pointer">
@@ -59,7 +59,6 @@ export default function Post({ post }: { post: IPost }) {
           </div>
           <div>{target.content}</div>
           <PostImages post={target} />
-
           <ActionButtons />
         </div>
       </div>
