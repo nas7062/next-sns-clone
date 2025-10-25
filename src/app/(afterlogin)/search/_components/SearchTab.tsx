@@ -1,8 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useContext, useState } from "react";
-import { TabContext } from "../../home/_component/TabProvider";
+import { useState } from "react";
 
 export default function SearchTab() {
   const [current, setCurrent] = useState("hot");

@@ -3,7 +3,7 @@ import SearchInput from "../_components/SearchInput";
 import SearchTab from "./_components/SearchTab";
 import SearchResult from "./_components/SearchResult";
 
-type SearchPageProps = {
+export type SearchPageProps = {
   searchParams: Promise<{ q: string; f?: string; pf?: string }>;
 };
 
@@ -16,7 +16,10 @@ export default async function Page({ searchParams }: SearchPageProps) {
         <SearchInput q={query.q} pf={query.pf} f={query.f} />
       </div>
       <SearchTab />
-      <div>{/* <SearchResult searchParams={query.q} /> */}</div>
+      <div>
+        {" "}
+        <SearchResult searchParams={query} />
+      </div>
     </main>
   );
 }
