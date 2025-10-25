@@ -4,7 +4,7 @@ import SearchTab from "./_components/SearchTab";
 import SearchResult from "./_components/SearchResult";
 
 export type SearchPageProps = {
-  searchParams: Promise<{ q: string; f?: string; pf?: string }>;
+  searchParams: { q: string; f?: string; pf?: string };
 };
 
 export default async function Page({ searchParams }: SearchPageProps) {
@@ -17,7 +17,6 @@ export default async function Page({ searchParams }: SearchPageProps) {
       </div>
       <SearchTab />
       <div>
-        {" "}
         <SearchResult searchParams={query} />
       </div>
     </main>

@@ -1,3 +1,5 @@
+"use client";
+
 import { useQuery } from "@tanstack/react-query";
 import Post from "../../_components/Post";
 import { Post as IPost } from "@/model/Post";
