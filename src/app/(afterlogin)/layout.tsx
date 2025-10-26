@@ -3,10 +3,10 @@ import NavMenu from "./_components/NavMenu";
 import Image from "next/image";
 import LogoutButton from "./_components/LogoutButton";
 import TrendSection from "./_components/TrendSection";
-import FollowRecomend from "./_components/FollowRecomend";
 import { ReactNode } from "react";
 import RightSearchZone from "./_components/RightSearchZone";
 import { PenSquare } from "lucide-react";
+import FollowRecommendSection from "./_components/FollowRecommendSection";
 
 export default function AfterLoginLayout({
   children,
@@ -56,7 +56,7 @@ export default function AfterLoginLayout({
           <section className="bg-gray-100 h-[100vh] w-[350px]  hidden lg:block">
             <RightSearchZone />
             <TrendSection />
-            <FollowRecomend />
+            <FollowRecommendSection />
           </section>
         </div>
 

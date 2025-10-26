@@ -7,7 +7,7 @@ type Props = {
 
 export default function Trend({ trend }: Props) {
   return (
-    <Link href={`/search?q=트렌드`}>
+    <Link href={`/search?q=${trend.title}`}>
       <div className="bg-gray-100 ml-2 hover:bg-gray-200">
         <p className="text-gray-500 text-sm">실시간트렌드</p>
         <p className="font-semibold text-lg">{trend.title}</p>

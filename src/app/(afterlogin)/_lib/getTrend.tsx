@@ -1,7 +1,7 @@
 export async function getTrend() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/trends`, {
     next: {
-      tags: ["posts", "recommends"],
+      tags: ["trends"],
     },
   });
   if (!res.ok) {
