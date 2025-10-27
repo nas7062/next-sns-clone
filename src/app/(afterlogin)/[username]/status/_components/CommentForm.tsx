@@ -4,7 +4,8 @@ import Image from "next/image";
 import logo from "@/../public/logo.svg";
 import { ImageDown } from "lucide-react";
 import { ChangeEvent, FormEventHandler, useRef, useState } from "react";
-export default function CommentForm() {
+import { useQueryClient } from "@tanstack/react-query";
+export default function CommentForm({ id }: { id: string }) {
   const imageRef = useRef<HTMLInputElement>(null);
   const [content, setContent] = useState("");
   const onChangeContent = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -17,6 +18,12 @@ export default function CommentForm() {
   const onClickImage = () => {
     if (imageRef.current) imageRef.current.click();
   };
+
+  const queryClient = useQueryClient();
+  const post = queryClient.getQueryData(["posts", id]);
+  if (!post) {
+    return null;
+  }
   return (
     <form action="" onSubmit={onSubmit}>
       <div className="flex flex-col gap-4 pt-24 border border-gray-100 pb-2">

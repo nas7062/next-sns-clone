@@ -1,5 +1,3 @@
-import logo from "@/../public/logo.svg";
-
 import {
   dehydrate,
   HydrationBoundary,

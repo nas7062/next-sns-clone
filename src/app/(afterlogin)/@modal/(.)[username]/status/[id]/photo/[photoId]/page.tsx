@@ -1,39 +1,42 @@
 import { XCircle } from "lucide-react";
-import Image from "next/image";
-import ActionButtons from "@/app/(afterlogin)/_components/ActionButtons";
-import Post from "@/app/(afterlogin)/_components/Post";
 import CommentForm from "@/app/(afterlogin)/[username]/status/_components/CommentForm";
-import { faker } from "@faker-js/faker";
-export default function Page() {
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
+import { getSinglePost } from "@/app/(afterlogin)/[username]/status/[id]/_lib/getSinglePost";
+import { getComments } from "@/app/(afterlogin)/[username]/status/[id]/_lib/getComments";
+import Comments from "@/app/(afterlogin)/[username]/status/_components/Comments";
+import SinglePost from "@/app/(afterlogin)/[username]/status/_components/SinglePost";
+import ImageZone from "./_components/ImageZone";
+type Props = {
+  params: { id: string };
+};
+
+export default async function Page(props: Props) {
+  const { id } = await props.params;
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ["posts", id],
+    queryFn: getSinglePost,
+  });
+  await queryClient.prefetchQuery({
+    queryKey: ["posts", id, "comments"],
+    queryFn: getComments,
+  });
+  const dehydratedState = dehydrate(queryClient);
   return (
     <div className="flex fixed inset-0 w-dvw h-dvh z-[9999]">
-      <XCircle />
-      <div className="flex flex-col flex-1 min-w-0 min-h-0">
-        <div className="relative flex-1 min-h-0">
-          <Image
-            src={faker.image.urlPicsumPhotos()}
-            alt="이미지"
-            fill
-            sizes="(min-width: 1024px) 66vw, 100vw"
-            className="object-cover"
-            priority
-          />
+      <HydrationBoundary state={dehydratedState}>
+        <XCircle />
+        <ImageZone id={id} />
+        <div className="w-[330px] overflow-y-scroll">
+          <SinglePost id={id} />
+          <CommentForm id={id} />
+          <Comments id={id} />
         </div>
-        <div className="bg-black">
-          <ActionButtons />
-        </div>
-      </div>
-      <div className="w-[330px] overflow-y-scroll">
-        <Post />
-        <CommentForm />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-      </div>
+      </HydrationBoundary>
     </div>
   );
 }
