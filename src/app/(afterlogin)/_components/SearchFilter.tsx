@@ -4,22 +4,17 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useRouter, useSearchParams } from "next/navigation";
 export default function SearchFilter() {
-  const searchParmas = useSearchParams();
+  const searchParams = useSearchParams();
   const router = useRouter();
   const onChangeFollow = () => {
-    let url = `/search?q=${searchParmas.get("q")}&pf=on`;
-    if (searchParmas.get("f")) {
-      url += `$f=${searchParmas.get("f")}`;
-    }
-    router.replace(url);
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set("pf", "on");
+    router.replace(`/search?${newSearchParams.toString()}`);
   };
-
   const onChangeAll = () => {
-    let url = `/search?q=${searchParmas.get("q")}`;
-    if (searchParmas.get("f")) {
-      url += `$f=${searchParmas.get("f")}`;
-    }
-    router.replace(url);
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.delete("pf");
+    router.replace(`/search?${newSearchParams.toString()}`);
   };
   return (
     <div className="mt-4 space-y-4">
