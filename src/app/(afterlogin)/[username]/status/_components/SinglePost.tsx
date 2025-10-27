@@ -5,8 +5,8 @@ import { Post as IPost } from "@/model/Post";
 import Post from "@/app/(afterlogin)/_components/Post";
 import { getSinglePost } from "../[id]/_lib/getSinglePost";
 
-export default function UserPosts({ id }: { id: string }) {
-  const { data: post } = useQuery<
+export default function SinglePost({ id }: { id: string }) {
+  const { data: post, error } = useQuery<
     IPost,
     object,
     IPost,
@@ -17,6 +17,9 @@ export default function UserPosts({ id }: { id: string }) {
     staleTime: 60000,
   });
   if (!post) {
+    return null;
+  }
+  if (error) {
     return <div>게시글을 찾을 수 없습니다.</div>;
   }
   <Post key={post.postId} post={post} />;
