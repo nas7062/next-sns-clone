@@ -5,6 +5,8 @@ export async function getFollowingPosts() {
       next: {
         tags: ["posts", "following"],
       },
+
+      cache: "force-cache",
     }
   );
   if (!res.ok) {
