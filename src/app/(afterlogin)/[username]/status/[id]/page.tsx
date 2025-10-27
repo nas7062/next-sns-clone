@@ -34,7 +34,7 @@ export default async function Page(props: Props) {
           <h3 className="text-lg font-semibold relative top-2">게시하기</h3>
         </div>
         <SinglePost id={id} />
-        <CommentForm />
+        <CommentForm id={id} />
         <div>
           <Comments id={id} />
         </div>
