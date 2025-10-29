@@ -22,6 +22,12 @@ export default async function onSubmit(
         credentials: "include",
       }
     );
+    if (response.status === 400) {
+      return {
+        message: (await response.json()).data[0],
+        email: formData.get("email"),
+      };
+    }
     await signIn("credentials", {
       username: formData.get("id"),
       password: formData.get("password"),
