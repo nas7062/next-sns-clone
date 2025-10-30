@@ -25,6 +25,11 @@ export default function Page() {
       password,
       redirect: false,
     });
+    if (res?.code === "no_user") {
+      setMessage("가입하지 않은 유저입니다.");
+    } else if (res?.code === "wrong_password") {
+      setMessage("비밀번호가 틀렸습니다.");
+    }
     if (res?.ok) {
       router.replace("/home");
     } else {
