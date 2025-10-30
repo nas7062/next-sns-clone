@@ -79,12 +79,28 @@ export default function PostForm() {
             value={content}
           />
         </div>
-        <div style={{ display: 'flex' }}>
-          {preview.map((v, index) => (
-            v && <div key={index} style={{ flex: 1 }} onClick={onRemoveImage(index)}>
-              <img src={v.dataUrl} alt="미리보기" style={{objectFit: "contain", width: '100%', maxHeight: 100}} />
-            </div>
-          ))}
+        <div style={{ display: "flex" }}>
+          {preview.map(
+            (v, index) =>
+              v && (
+                <div
+                  key={index}
+                  style={{ flex: 1 }}
+                  onClick={onRemoveImage(index)}
+                >
+                  <img
+                    src={v.dataUrl}
+                    alt="미리보기"
+                    style={{
+                      objectFit: "contain",
+                      width: "100%",
+                      maxHeight: 100,
+                    }}
+                  />
+                </div>
+              )
+          )}
+        </div>
         <div className="flex justify-between w-[90%] mx-auto">
           <div className="w-10 h-10 hover:bg-sky-200 rounded-full flex justify-center items-center">
             <input type="file" hidden ref={imageRef} />
